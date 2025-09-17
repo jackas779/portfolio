@@ -27,7 +27,9 @@ const { date, title, description, company } = Astro.props;
     <h3 class="flex gap-x-1.5 font-semibold text-blue-400">
       {title}
     </h3>
-    <p class="mt-1 text-sm text-gray-600 dark:text-neutral-400 text-pretty">
+    <p
+      class="mt-1 text-sm text-gray-600 dark:text-neutral-400 text-pretty max-w-[550px]"
+    >
       {description}
     </p>
     <button
