@@ -1,0 +1,32 @@
+---
+const PROJECTS = [
+  {
+    title: "project",
+    description:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo at nulla quas nostrum quam minus magni error odio fugiat nemo! Dolores laboriosam rerum labore mollitia provident harum voluptas perferendis quaerat!",
+    link: "xd",
+    gitihub: "git",
+    image: "/projects/prueba.webp",
+    tags: ["HTML", "CSS", "Javascript"],
+  },
+];
+---
+
+{
+  PROJECTS.map(({ image, title, description, tags }) => (
+    <article>
+      <img
+        class="rounded shadow-2xl shadow-white/5"
+        src={image}
+        alt={`Captura del proyecto ${title}`}
+      />
+      <h3 class="text-2xl font-semibold text-blue-400 mb-2">{title}</h3>
+      <p class="text-lg mb-4 text-pretty">{description}</p>
+      <ul>
+        {tags.map((tag) => (
+          <li>{tag}</li>
+        ))}
+      </ul>
+    </article>
+  ))
+}
