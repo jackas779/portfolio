@@ -1,11 +1,60 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Badge from "../components/Badge.astro";
+import SocialPill from "../components/SocialPill.astro";
+import LinkeinIcon from "../components/icons/Linkedin.astro";
+import GitHubIcon from "../components/icons/GitHub.astro";
+import Experience from "../components/Experience.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import DeviceLaptop from "../components/icons/DeviceLaptop.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+	title="Porfolio de Nicolas Ardila - Desarrollador y Programador Web"
+	description="Projecto personal para poder dar visivilidad a mis carrera a lo largo de 4 años de experiencia"
+>
+	<main>
+		<SectionContainer class="py-44 pb-24">
+			<h1 class="text-5xl font-bold flex flex-row gap-x-4 pb-4">
+				Hola, Nicolas Ardila <a
+					href="https://www.linkedin.com/in/nicolas-ardilabb381a1a3/"
+					target="_blank"
+					class="flex justify-center items-center"
+				>
+					<Badge>Disponible</Badge>
+				</a>
+			</h1>
+			<h2 class="text-2xl text-wrap">
+				<span>+3 años de experiencia,</span>
+				<span class="text-blue-400"
+					>Desarollador Backend con conocimiento de Frontend,</span
+				><span class="text-amber-400/50"> de Colombia, Bogotá</span>
+				<span class="opacity-70">
+					especializado en desarrollo de software a la medida</span
+				>
+			</h2>
+
+			<nav class="flex gap-x-2 mt-8">
+				<SocialPill href="https://www.linkedin.com/in/nicolas-ardilabb381a1a3/">
+					<LinkeinIcon class="size-6" />
+					Linkedin
+				</SocialPill>
+				<SocialPill href="https://github.com/jackas779">
+					<GitHubIcon class="size-6" />
+					GitHub
+				</SocialPill>
+			</nav>
+		</SectionContainer>
+
+		<SectionContainer id="experiencia">
+			<h2 class="text-2xl font-semibold mb-6 flex items-center gap-x-3">
+				<DeviceLaptop class="size-8" />
+				Experiencia Laboral
+			</h2>
+			<Experience />
+		</SectionContainer>
+	</main>
 </Layout>

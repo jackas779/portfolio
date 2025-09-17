@@ -1,0 +1,25 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+
+const EXPERIENCE = [
+  {
+    date: 2025,
+    title: "Desarrolador PHP",
+    description: "Algo de desarrollo",
+    company: "Exabyte",
+  },
+  {
+    date: 2023,
+    title: "Desarrolador Junior",
+    description:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis dignissimos tempore, rerum quasi asperiores nisi odit maxime! Deleniti facere eum, inventore dolor maiores consequuntur. Suscipit, est reprehenderit. Explicabo, ratione sit.",
+    company: "Bextechnology",
+  },
+];
+---
+
+<!-- Timeline -->
+<div>
+  {EXPERIENCE.map((experience) => <ExperienceItem {...experience} />)}
+</div>
+<!-- End Timeline -->
