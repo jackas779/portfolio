@@ -11,6 +11,7 @@ import LinkeinIcon from "../components/icons/Linkedin.astro";
 import GitHubIcon from "../components/icons/GitHub.astro";
 import DeviceLaptopIcon from "../components/icons/DeviceLaptop.astro";
 import CodeIcon from "../components/icons/Code.astro";
+import TitleSection from "../components/TitleSection.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -37,7 +38,7 @@ import CodeIcon from "../components/icons/Code.astro";
 				<span>+3 años de experiencia,</span>
 				<span class="text-blue-400"
 					>Desarollador Backend con conocimiento de Frontend,</span
-				><span class="text-amber-400/50"> de Colombia, Bogotá</span>
+				><span class="text-amber-300/90"> de Colombia, Bogotá</span>
 				<span class="opacity-70">
 					especializado en desarrollo de software a la medida</span
 				>
@@ -56,18 +57,18 @@ import CodeIcon from "../components/icons/Code.astro";
 		</SectionContainer>
 
 		<SectionContainer id="experiencia" class="pb-24">
-			<h2 class="text-2xl font-semibold mb-6 flex items-center gap-x-3">
+			<TitleSection>
 				<DeviceLaptopIcon class="size-8" />
 				Experiencia Laboral
-			</h2>
+			</TitleSection>
 			<Experience />
 		</SectionContainer>
 
 		<SectionContainer id="proyectos" class="pb-24">
-			<h2 class="text-2xl font-semibold mb-6 flex items-center gap-x-3">
+			<TitleSection>
 				<CodeIcon class="size-8" />
 				Proyectos
-			</h2>
+			</TitleSection>
 			<Projects />
 		</SectionContainer>
 	</main>

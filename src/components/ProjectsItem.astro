@@ -1,0 +1,64 @@
+---
+import LinkButton from "./LinkButton.astro";
+
+// Define the type for a link item
+type LinkItem = {
+  title: string;
+  icon: any;
+  href: string;
+};
+
+const { image, title, description, tags, links } = Astro.props as {
+  image: string;
+  title: string;
+  description: string;
+  tags: unknown[];
+  links: LinkItem[];
+};
+---
+
+<div class="flex flex-col md:flex-row gap-8 rounded-xl py-4 px-1">
+  <!-- Contenedor de la Imagen y las Habilidades -->
+  <div class="flex flex-col items-start gap-4">
+    <img
+      src={image}
+      alt="Imagen del proyecto"
+      class="w-full h-auto max-h-60 object-cover rounded-xl border border-gray-200"
+    />
+    <!-- Lista de Habilidades/Tecnologías -->
+    <ul class="flex flex-wrap gap-2">
+      {
+        tags.map((tag: unknown) => (
+          <li class="rounded-full bg-gray-200 px-3 py-1 text-sm font-medium text-gray-700">
+            {tag}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <!-- Contenedor de la Descripción y el Enlace -->
+  <div class="flex flex-1 flex-col justify-center gap-4">
+    <h3 class="text-3xl font-bold text-gray-800">{title}</h3>
+    <p class="text-base text-gray-600 text-pretty">{description}</p>
+    <!-- Enlace/Botón -->
+    <div class="flex flex-wrap mt-2">
+      <ul class="flex flex-row mb-2 gap-x-2">
+        {
+          links.map(({ title, icon: Icon, href }) => {
+            return (
+              <li>
+                <span>
+                  <LinkButton href={href}>
+                    <Icon class="size-4" />
+                    {title}
+                  </LinkButton>
+                </span>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </div>
+</div>

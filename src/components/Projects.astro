@@ -1,10 +1,25 @@
 ---
+import ProjectsItem from "./ProjectsItem.astro";
+import GitHubIcon from "./icons/GitHub.astro";
+import UnLink from "./icons/UnLink.astro";
+
 const PROJECTS = [
   {
     title: "project",
     description:
       "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo at nulla quas nostrum quam minus magni error odio fugiat nemo! Dolores laboriosam rerum labore mollitia provident harum voluptas perferendis quaerat!",
-    link: "xd",
+    links: [
+      {
+        title: "GitHub",
+        href: "https://github.com/jackas779/portfolio",
+        icon: GitHubIcon,
+      },
+      {
+        title: "Preview",
+        href: "https://porfolio-jackas779.netlify.app/",
+        icon: UnLink,
+      },
+    ],
     gitihub: "git",
     image: "/projects/prueba.webp",
     tags: ["HTML", "CSS", "Javascript"],
@@ -13,8 +28,16 @@ const PROJECTS = [
 ---
 
 {
-  PROJECTS.map(({ image, title, description, tags }) => (
+  PROJECTS.map((project) => (
     <article>
+      <ProjectsItem {...project} />
+    </article>
+  ))
+}
+
+<!-- {(<ProjectsItem />)} -->
+
+<!-- 
       <img
         class="rounded shadow-2xl shadow-white/5"
         src={image}
@@ -26,7 +49,4 @@ const PROJECTS = [
         {tags.map((tag) => (
           <li>{tag}</li>
         ))}
-      </ul>
-    </article>
-  ))
-}
+      </ul> -->
