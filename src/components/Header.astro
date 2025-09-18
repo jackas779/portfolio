@@ -1,17 +1,11 @@
 ---
 import { Image } from "astro:assets";
-import Hamburguer from "./icons/Hamburguer.astro";
+import ToggleTheme from "./ToggleTheme.astro";
 ---
 
 <header
   class="flex justify-center flex-col-reverse gap-y-10 items-center py-5 px-4 w-full max-w-[850px] mx-auto sm:justify-between sm:flex-row"
 >
-  <!-- <img
-    class="rounded-full size-12"
-    src="https://purina.com.co/sites/default/files/2022-11/purina-brand-cuanto-vive-un-gato-nota_03.jpg"
-    alt="Nicolas Ardila"
-  /> -->
-
   <Image
     inferSize={true}
     class="rounded-full size-50 sm:size-20"
@@ -19,15 +13,11 @@ import Hamburguer from "./icons/Hamburguer.astro";
     alt="Nicolas Ardila"
   />
 
-  <!-- <Hamburguer class="size-7 sm:hidden" /> -->
-  <!-- <nav
-    class="flex flex-col sm:flex-row gap-y-4 sm:gap-x-10 mt-4 sm:mt-0 opacity-80"
-  > -->
   <nav class="flex flex-row gap-x-4 opacity-80 sm:gap-x-10">
     <a href="#top">Inicio</a>
     <a href="#experiencia">Experiencia</a>
-    <a href="#sobre-mi">Sobre mí</a>
     <a href="#proyectos">Proyectos</a>
     <a href="#contacto">Contacto</a>
+    <ToggleTheme />
   </nav>
 </header>

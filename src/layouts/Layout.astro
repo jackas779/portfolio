@@ -9,7 +9,11 @@ const { description, title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html
+	lang="es"
+	data-theme=""
+	class="transition-colors duration-500 ease-in-out"
+>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
@@ -18,10 +22,10 @@ const { description, title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="text-black bg-white dark:text-white dark:bg-black">
 		<Header />
 		<slot />
-		<Footer /> 
+		<Footer />
 	</body>
 </html>
 
@@ -59,4 +63,20 @@ const { description, title } = Astro.props;
 			scroll-behavior: auto;
 		}
 	}
+
+	#header-nav {
+		animation: blur linear both 0.5s;
+		animation-timeline: scroll();
+		animation-range: 0 500px;
+	}
 </style>
+
+<script>
+	const localTheme = document.documentElement.dataset;
+	const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+	if (isDarkMode) {
+		localTheme.theme = "dark";
+	} else {
+		localTheme.theme = "light";
+	}
+</script>
