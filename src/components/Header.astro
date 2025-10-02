@@ -1,23 +1,67 @@
 ---
 import { Image } from "astro:assets";
 import ToggleTheme from "./ToggleTheme.astro";
+
+const navItems = [
+  {
+    title: "Inicio",
+    label: "",
+    url: "#top",
+  },
+  {
+    title: "Experiencia",
+    label: "",
+    url: "#experiencia",
+  },
+  {
+    title: "Proyectos",
+    label: "",
+    url: "#proyectos",
+  },
+  {
+    title: "Contacto",
+    label: "",
+    url: "#contacto",
+  },
+];
 ---
 
 <header
-  class="flex justify-center flex-col-reverse gap-y-10 items-center py-5 px-4 w-full max-w-[850px] mx-auto sm:justify-between sm:flex-row"
+  class="flex justify-center gap-y-10 items-center
+  py-3 px-4
+  w-full max-w-[850px]
+  mx-auto s
+  sticky top-0"
 >
-  <Image
+  <!-- <Image
     inferSize={true}
     class="rounded-full size-50 sm:size-20"
     src="https://purina.com.co/sites/default/files/2022-11/purina-brand-cuanto-vive-un-gato-nota_03.jpg"
     alt="Nicolas Ardila"
-  />
+  /> -->
 
-  <nav class="flex flex-row gap-x-4 opacity-80 sm:gap-x-10">
-    <a href="#top">Inicio</a>
-    <a href="#experiencia">Experiencia</a>
-    <a href="#proyectos">Proyectos</a>
-    <a href="#contacto">Contacto</a>
+  <nav
+    class="flex flex-row justify-between gap-x-2
+    opacity-80
+    rounded-4xl
+    py-2 px-4
+    bg-white border-amber-100
+    backdrop-blur-3xl
+    font-bold
+    text-sm
+    dark:bg-sky-900 border dark:border-none
+    sm:gap-x-2.5 sm:text-base"
+  >
+    {
+      navItems.map((link) => (
+        <a
+          class="  hover:text-sky-600 dark:hover:text-yellow-300"
+          href={link.url}
+        >
+          {link.title}
+        </a>
+      ))
+    }
     <ToggleTheme />
   </nav>
 </header>
