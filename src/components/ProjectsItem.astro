@@ -29,7 +29,15 @@ const { image, title, description, tags, links } = Astro.props as {
     <ul class="flex flex-wrap gap-2">
       {
         tags.map((tag: unknown) => (
-          <li class="rounded-full bg-gray-200 px-3 py-1 text-sm font-medium text-gray-700">
+          <li
+            class="
+            rounded-full 
+            bg-gray-200 
+            px-3 py-1 
+            text-sm text-gray-700 
+            font-medium
+            "
+          >
             {tag}
           </li>
         ))
@@ -39,8 +47,14 @@ const { image, title, description, tags, links } = Astro.props as {
 
   <!-- Contenedor de la Descripción y el Enlace -->
   <div class="flex flex-1 flex-col justify-center gap-4">
-    <h3 class="text-3xl font-bold text-gray-800">{title}</h3>
-    <p class="text-base text-gray-600 text-pretty">{description}</p>
+    <h3 class="text-3xl text-blue-400/90
+    font-bold">
+      {title}
+    </h3>
+    <p class="text-base text-gray-600 text-pretty
+    dark:text-neutral-400">
+      {description}
+    </p>
     <!-- Enlace/Botón -->
     <div class="flex flex-wrap mt-2">
       <ul class="flex flex-row mb-2 gap-x-2">
