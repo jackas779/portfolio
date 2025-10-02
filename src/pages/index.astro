@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
 
 import Badge from "../components/Badge.astro";
 import SocialPill from "../components/SocialPill.astro";
@@ -22,11 +23,20 @@ import TitleSection from "../components/TitleSection.astro";
 	description="Projecto personal para poder dar visivilidad a mis carrera a lo largo de 4 años de experiencia"
 >
 	<main class="px-4">
-		<SectionContainer class="py-15 pb-15 sm:py-25 lg:py-35">
+		<SectionContainer class="py-4 pb-15 lg:py-7">
+			<div class="flex justify-center items-center mb-6">
+				<Image
+					inferSize={true}
+					class="rounded-full size-50"
+					src="https://purina.com.co/sites/default/files/2022-11/purina-brand-cuanto-vive-un-gato-nota_03.jpg"
+					alt="Nicolas Ardila"
+				/>
+			</div>
+
 			<h1
 				class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-4"
 			>
-				Hola, Nicolas Ardila <a
+				Dev, Nicolas Ardila <a
 					href="https://www.linkedin.com/in/nicolas-ardilabb381a1a3/"
 					target="_blank"
 					class="flex justify-center items-center"
@@ -35,12 +45,13 @@ import TitleSection from "../components/TitleSection.astro";
 				</a>
 			</h1>
 			<h2 class="text-xl md:text-xl lg:text-2xl text-wrap max-w-[700px]">
-				<span>+3 años de experiencia,</span>
+				<span>+3 años de experiencia.</span>
 				<span class="text-blue-400"
-					>Desarollador Backend con conocimiento de Frontend,</span
+					>Ingeniero de software en proceso enfocado en Backend con conocimiento
+					de Frontend,</span
 				><span class="text-amber-300/90"> de Colombia, Bogotá</span>
 				<span class="opacity-70">
-					especializado en desarrollo de software a la medida</span
+					especializado en desarrollo de software a la medida.</span
 				>
 			</h2>
 
