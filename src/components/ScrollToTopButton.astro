@@ -1,0 +1,65 @@
+---
+import IconArrowTop from "./icons/ArrowTop.astro";
+---
+
+<button
+  id="scrollToTopBtn"
+  aria-label="Ir al inicio de la página"
+  class="fixed
+        bottom-6
+        right-6
+        bg-blue-600
+        hover:bg-blue-700
+        dark:bg-blue-500
+        dark:hover:bg-blue-600
+        text-white
+        p-3
+        rounded-full
+        shadow-xl
+        z-50
+        opacity-0
+        translate-y-4
+        transition-all
+        duration-300
+        cursor-pointer"
+>
+  <IconArrowTop />
+</button>
+
+<script>
+  // Todo el JavaScript se ejecuta en el navegador (lado del cliente)
+  document.addEventListener("DOMContentLoaded", () => {
+    const scrollBtn = document.getElementById("scrollToTopBtn");
+
+    if (!scrollBtn) return;
+
+    const SCROLL_THRESHOLD = 300;
+
+    // 1. Controla la visibilidad
+    const toggleVisibility = () => {
+      if (window.scrollY > SCROLL_THRESHOLD) {
+        // Mostrar con animación
+        scrollBtn.classList.remove("opacity-0", "translate-y-4");
+        scrollBtn.classList.add("opacity-100", "translate-y-0");
+      } else {
+        // Ocultar con animación
+        scrollBtn.classList.remove("opacity-100", "translate-y-0");
+        scrollBtn.classList.add("opacity-0", "translate-y-4");
+      }
+    };
+
+    // 2. Controla el scroll al top
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    };
+
+    // 3. Asignación de Eventos
+    window.addEventListener("scroll", toggleVisibility);
+    scrollBtn.addEventListener("click", scrollToTop);
+
+    toggleVisibility();
+  });
+</script>
