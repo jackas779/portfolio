@@ -3,11 +3,6 @@ import ToggleTheme from "./ToggleTheme.astro";
 
 const navItems = [
   {
-    title: "Inicio",
-    label: "top",
-    url: "#top",
-  },
-  {
     title: "Experiencia",
     label: "experiencia",
     url: "#experiencia",
@@ -18,9 +13,9 @@ const navItems = [
     url: "#proyectos",
   },
   {
-    title: "Contacto",
-    label: "contacto",
-    url: "#contacto",
+    title: "sobre mí",
+    label: "sobre-mi",
+    url: "#sobre-mi",
   },
 ];
 ---
@@ -47,7 +42,7 @@ const navItems = [
     {
       navItems.map((link) => (
         <a
-          class="  hover:text-sky-600 dark:hover:text-yellow-300"
+          class="hover:text-sky-600 dark:hover:text-yellow-300"
           aria-label={link.label}
           href={link.url}
         >
@@ -64,42 +59,63 @@ const navItems = [
     const sections = document.querySelectorAll("section");
     const navItems = document.querySelectorAll("header nav a");
 
-    const ACTIVE_CLASSES = ["text-blue-600", "dark:text-yellow-300"];
-    const INACTIVE_CLASSES = ["text-blue-600", "dark:text-yellow-300"];
+    const CLASSES = ["text-blue-600", "dark:text-yellow-300"];
+
+    // Función para limpiar todos los estados de los enlaces
+    const deactivateAllLinks = () => {
+      navItems.forEach((item) => {
+        item.classList.add(...CLASSES);
+        item.classList.remove(...CLASSES);
+      });
+    };
 
     const callback = (entries: any[]) => {
+      // Optimización: Si al menos una sección ha cruzado el umbral
+      let activeSectionFound = false;
+
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          navItems.forEach((item) => {
-            if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add(...INACTIVE_CLASSES);
-            } else {
-              item.classList.remove(...ACTIVE_CLASSES);
-            }
-          });
+          // 1. Limpiamos todos los enlaces ANTES de activar el actual.
+          //    Esto asegura que solo UNO esté activo a la vez.
+          deactivateAllLinks();
+
+          const targetId = entry.target.id;
+
+          // 2. Buscamos el enlace correspondiente usando el atributo 'aria-label'
+          const currentLink = document.querySelector(
+            `a[aria-label="${targetId}"]`,
+          );
+
+          if (currentLink) {
+            currentLink.classList.remove(...CLASSES);
+            currentLink.classList.add(...CLASSES);
+            activeSectionFound = true;
+          }
         }
       });
+
+      // 3. Solución para el bug del TOP: Si no se encuentra ninguna sección activa
+      //    (lo cual puede ocurrir si el top está entre secciones), activamos forzosamente el primer enlace.
+      if (!activeSectionFound && window.scrollY < 10) {
+        // Menos de 10px de scroll
+        const firstLink = navItems[0];
+        if (firstLink) {
+          deactivateAllLinks();
+          firstLink.classList.remove(...CLASSES);
+          firstLink.classList.add(...CLASSES);
+        }
+      }
     };
 
     const observer = new IntersectionObserver(callback, {
       root: null,
-      rootMargin: "0px",
-      threshold: 1.0,
+      // Centra el área de detección en el 50% de la pantalla para evitar bugs de threshold
+      rootMargin: "-50% 0px -50% 0px",
+      threshold: 0,
     });
 
     sections.forEach((section) => {
       observer.observe(section);
     });
-
-    // Cleanup function
-    document.onvisibilitychange = () => {
-      if (document.visibilityState === "hidden") {
-        observer.disconnect();
-      } else {
-        sections.forEach((section) => {
-          observer.observe(section);
-        });
-      }
-    };
   });
 </script>
