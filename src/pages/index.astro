@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 
+import TitleSection from "../components/TitleSection.astro";
 import Badge from "../components/Badge.astro";
 import SocialPill from "../components/SocialPill.astro";
 import Experience from "../components/Experience.astro";
@@ -12,7 +13,8 @@ import LinkeinIcon from "../components/icons/Linkedin.astro";
 import GitHubIcon from "../components/icons/GitHub.astro";
 import DeviceLaptopIcon from "../components/icons/DeviceLaptop.astro";
 import CodeIcon from "../components/icons/Code.astro";
-import TitleSection from "../components/TitleSection.astro";
+import UserStarIcon from "../components/icons/UserStar.astro";
+import AboutMe from "../components/AboutMe.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -81,6 +83,14 @@ import TitleSection from "../components/TitleSection.astro";
 				Proyectos
 			</TitleSection>
 			<Projects />
+		</SectionContainer>
+
+		<SectionContainer id="sobre-mi" class="pb-24">
+			<TitleSection>
+				<UserStarIcon class="size-8" />
+				Sobre mí
+			</TitleSection>
+			<AboutMe />
 		</SectionContainer>
 	</main>
 </Layout>
